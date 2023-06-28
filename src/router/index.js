@@ -8,13 +8,18 @@ import Plots from "../plots/components/plots.component.vue";
 const routes = [
   {
     path: "/",
-    name: "home",
-    component: HomeView,
+    name: "login",
+    component: LoginView,
   },
   {
     path: "/login",
     name: "Login",
     component: LoginView,
+  },
+  {
+    path: "/home",
+    name: "home",
+    component: HomeView,
   },
   {
     path: "/plans",

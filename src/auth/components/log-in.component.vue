@@ -1,37 +1,37 @@
 <script>
-import { defineComponent, ref , reactive } from 'vue';
+import { defineComponent, ref, reactive } from "vue";
 import authApiService from "@/auth/services/auth-api.service";
 import router from "@/router";
 
 export default defineComponent({
-    name: 'login-view',
-    setup() {
-        const form = reactive({
-            username: '',
-            password: ''
-        });
-        const errorMessage = ref('');
+  name: "login-view",
+  setup() {
+    const form = reactive({
+      username: "",
+      password: "",
+    });
+    const errorMessage = ref("");
 
-        const loginUser = async () => {
-            const loginData = {
-                username: form.username,
-                password: form.password
-            };
+    const loginUser = async () => {
+      const loginData = {
+        username: form.username,
+        password: form.password,
+      };
 
-            try {
-                await authApiService.signIn(loginData);
-                router.push('/');
-            } catch (error) {
-                errorMessage.value = error.response.data.message;
-            }
-        };
+      try {
+        await authApiService.signIn(loginData);
+        router.push("/home");
+      } catch (error) {
+        errorMessage.value = error.response.data.message;
+      }
+    };
 
-        return {
-            form,
-            errorMessage,
-            loginUser
-        };
-    }
+    return {
+      form,
+      errorMessage,
+      loginUser,
+    };
+  },
 });
 </script>
 
@@ -39,35 +39,43 @@ export default defineComponent({
   <div class="bg-container">
     <div class="form-container">
       <pv-card>
-          <template #header>
-            <div class="header">
-              <div class="logo-container">
-                <img class="logo" src="src/assets/logo.png" alt="logo">
-                <span>AgriPure</span>
-              </div>
+        <template #header>
+          <div class="header">
+            <div class="logo-container">
+              <img class="logo" src="@/assets/logo.png" alt="logo" />
+              <span>AgriPure</span>
             </div>
-          </template>
+          </div>
+        </template>
 
-          <template #content>
-            <div class="content">
-              <div class="btn-container">
-                <RouterLink to="/login">
-                    <pv-button text raised>Log in</pv-button>
-                </RouterLink>
-                <RouterLink to="/register">
-                    <pv-button text raised>Sign up</pv-button>
-                </RouterLink>
-              </div>
-                <form @submit.prevent="loginUser">
-                    <br>
-                    <pv-inputText type="text" v-model="form.username" placeholder="Username" />
-                    <br>
-                    <pv-inputText type="password" v-model="form.password" placeholder="Password" />
-                    <br>
-                    <pv-button type="submit" raised>Submit</pv-button>
-                </form>
+        <template #content>
+          <div class="content">
+            <div class="btn-container">
+              <RouterLink to="/login">
+                <pv-button text raised>Log in</pv-button>
+              </RouterLink>
+              <RouterLink to="/register">
+                <pv-button text raised>Sign up</pv-button>
+              </RouterLink>
             </div>
-          </template>
+            <form @submit.prevent="loginUser">
+              <br />
+              <pv-inputText
+                type="text"
+                v-model="form.username"
+                placeholder="Username"
+              />
+              <br />
+              <pv-inputText
+                type="password"
+                v-model="form.password"
+                placeholder="Password"
+              />
+              <br />
+              <pv-button type="submit" raised>Submit</pv-button>
+            </form>
+          </div>
+        </template>
       </pv-card>
     </div>
   </div>
@@ -97,10 +105,9 @@ export default defineComponent({
   max-width: 30rem;
   margin: 0 1rem;
   padding: 2rem 0;
-  border-radius:20px;
+  border-radius: 20px;
   background-color: rgb(63, 63, 63);
-  color:white;
-  
+  color: white;
 }
 
 .header {
@@ -135,7 +142,7 @@ export default defineComponent({
   margin: 1rem 0;
 }
 
-.content form button[type=submit] {
+.content form button[type="submit"] {
   background: rgb(47, 153, 47);
   border-color: rgb(47, 153, 47);
   justify-content: center;
@@ -148,13 +155,13 @@ export default defineComponent({
   justify-content: center;
   background-color: rgb(53, 53, 53);
   margin: 0 0 1rem;
-  padding: .25rem;
+  padding: 0.25rem;
   border-radius: 6px;
 }
 
 .btn-container .p-button {
   width: 100%;
-  color:white;
+  color: white;
   justify-content: center;
 }
 
@@ -163,7 +170,7 @@ export default defineComponent({
 }
 
 .btn-container > * + * {
-  margin-left: .25rem;
+  margin-left: 0.25rem;
 }
 
 @media (max-width: 599.98px) {
@@ -185,5 +192,4 @@ export default defineComponent({
     font-size: 2.5rem;
   }
 }
-
 </style>

@@ -5,7 +5,7 @@
         <template #header>
           <div class="header">
             <div class="logo-container">
-              <img class="logo" src="src/assets/logo.png" alt="logo">
+              <img class="logo" src="@/assets/logo.png" alt="logo" />
               <span>AgriPure</span>
             </div>
           </div>
@@ -22,17 +22,33 @@
               </RouterLink>
             </div>
             <form @submit.prevent="submitForm">
-              <br>
-              <pv-inputText v-model="firstName" type="text" placeholder="First Name" />
-              <br>
-              <pv-inputText v-model="lastName" type="text" placeholder="Last Name" />
-              <br>
-              <pv-inputText v-model="username" type="text" placeholder="Username" />
-              <br>
+              <br />
+              <pv-inputText
+                v-model="firstName"
+                type="text"
+                placeholder="First Name"
+              />
+              <br />
+              <pv-inputText
+                v-model="lastName"
+                type="text"
+                placeholder="Last Name"
+              />
+              <br />
+              <pv-inputText
+                v-model="username"
+                type="text"
+                placeholder="Username"
+              />
+              <br />
               <pv-inputText v-model="email" type="text" placeholder="Email" />
-              <br>
-              <pv-inputText v-model="password" type="password" placeholder="Password" />
-              <br>
+              <br />
+              <pv-inputText
+                v-model="password"
+                type="password"
+                placeholder="Password"
+              />
+              <br />
               <pv-button type="submit" raised>Submit</pv-button>
             </form>
           </div>
@@ -43,12 +59,12 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue';
-import { useRouter } from 'vue-router';
-import AuthApiService from '../services/auth-api.service';
+import { defineComponent } from "vue";
+import { useRouter } from "vue-router";
+import AuthApiService from "../services/auth-api.service";
 
 export default defineComponent({
-  name: 'register-component',
+  name: "register-component",
   setup() {
     const router = useRouter();
 
@@ -58,11 +74,11 @@ export default defineComponent({
   },
   data() {
     return {
-      firstName: '',
-      lastName: '',
-      username: '',
-      email: '',
-      password: '',
+      firstName: "",
+      lastName: "",
+      username: "",
+      email: "",
+      password: "",
     };
   },
   methods: {
@@ -77,10 +93,10 @@ export default defineComponent({
 
       AuthApiService.signUp(registerData)
         .then(() => {
-          this.router.push('/login');
+          this.router.push("/login");
         })
-        .catch(error => {
-          console.error('Error en el registro:', error);
+        .catch((error) => {
+          console.error("Error en el registro:", error);
         });
     },
   },
@@ -112,10 +128,9 @@ export default defineComponent({
   max-width: 30rem;
   margin: 0 1rem;
   padding: 2rem 0;
-  border-radius:20px;
+  border-radius: 20px;
   background-color: rgb(63, 63, 63);
-  color:white;
-  
+  color: white;
 }
 
 .header {
@@ -150,7 +165,7 @@ export default defineComponent({
   margin: 1rem 0;
 }
 
-.content form button[type=submit] {
+.content form button[type="submit"] {
   background: rgb(47, 153, 47);
   border-color: rgb(47, 153, 47);
   justify-content: center;
@@ -163,13 +178,13 @@ export default defineComponent({
   justify-content: center;
   background-color: rgb(53, 53, 53);
   margin: 0 0 1rem;
-  padding: .25rem;
+  padding: 0.25rem;
   border-radius: 6px;
 }
 
 .btn-container .p-button {
   width: 100%;
-  color:white;
+  color: white;
   justify-content: center;
 }
 
@@ -178,7 +193,7 @@ export default defineComponent({
 }
 
 .btn-container > * + * {
-  margin-left: .25rem;
+  margin-left: 0.25rem;
 }
 
 @media (max-width: 599.98px) {
