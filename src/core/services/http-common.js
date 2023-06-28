@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const httpCommon = axios.create({
-  baseURL: "http://localhost:5120/api/v1",
+  baseURL:
+    "https://webservicesagripure-develop-production.up.railway.app/api/v1",
   headers: { "Content-type": "application/json" },
 });
 
